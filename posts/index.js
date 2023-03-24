@@ -1,8 +1,10 @@
 const express = require('express');
 const { randomBytes } = require('crypto');
+const cors = require('cors');
 
 const PORT = 3000;
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 const posts = {};
@@ -21,5 +23,5 @@ app.post('/posts', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Posts server runing on the port ${PORT}`);
+    console.log(`Posts server running on the port ${PORT}`);
 });
