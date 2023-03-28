@@ -1,27 +1,13 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+type CommentListProps = {
+    comments: Comment[];
+}
 
-interface Comment {
+export interface Comment {
     id: string;
     content: string;
 }
 
-type CommentListProps = {
-    postId: string;
-}
-
-export const CommentList = ({ postId }: CommentListProps) => {
-    const [comments, setComments] = useState<Comment[]>([]);
-
-    const fetchComments = async (): Promise<void> => {
-        const { data } = await axios.get(`http://localhost:3001/posts/${postId}/comments`);
-        setComments(data);
-    }
-
-    useEffect(() => {
-        fetchComments();
-    }, []);
-
+export const CommentList = ({ comments }: CommentListProps) => {
     return (
         <ul>
             {
