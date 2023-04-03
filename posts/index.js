@@ -11,11 +11,7 @@ app.use(express.json());
 
 const posts = {};
 
-app.get('/posts', (_, res) => {
-    res.status(200).json(posts);
-});
-
-app.post('/posts', async (req, res) => {
+app.post('/posts/create', async (req, res) => {
     const { title } = req.body;
 
     const id = randomBytes(4).toString('hex');

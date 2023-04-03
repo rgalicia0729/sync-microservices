@@ -13,9 +13,9 @@ app.post('/events', (req, res) => {
 
     events.push(event);
 
-    axios.post('http://localhost:3001/events', event).catch((err) => { console.error(err) });
-    axios.post('http://localhost:3002/events', event).catch((err) => { console.error(err) });
-    axios.post('http://localhost:3003/events', event).catch((err) => { console.error(err) });
+    axios.post('http://comments-srv:3001/events', event).catch((err) => { console.error(err) });
+    axios.post('http://query-srv:3002/events', event).catch((err) => { console.error(err) });
+    axios.post('http://moderation-srv:3003/events', event).catch((err) => { console.error(err) });
 
     res.status(200).json({ status: 'OK' });
 });
